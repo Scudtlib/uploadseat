@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>城區閱覽室 - 空位數據上傳系統</title>
+    <title>城區閱覽室 - 批次空位數據上傳系統</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -22,7 +22,7 @@
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
             text-align: center;
             width: 100%;
-            max-width: 400px;
+            max-width: 450px;
         }
         .upload-card h2 {
             margin-top: 0;
@@ -33,7 +33,19 @@
         .upload-card p {
             font-size: 14px;
             color: #7f8c8d;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
+        }
+        /* 新增的警告提示區塊樣式 */
+        .warning-text {
+            background-color: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeeba;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 14px;
+            margin-bottom: 25px;
+            text-align: left;
+            line-height: 1.6;
         }
         .file-input-wrapper {
             margin-bottom: 25px;
@@ -72,14 +84,19 @@
 <body>
 
 <div class="upload-card">
-    <h2>📊 閱覽室空位數據上傳</h2>
+    <h2>📊 閱覽室批次空位數據上傳</h2>
     <p>請選擇您要匯入的資料檔 (.txt 或 .csv)</p>
+
+    <div class="warning-text">
+        <strong>⚠️ 批次上傳注意事項：</strong><br>
+        為避免觸發 Google 系統防護機制導致寫入失敗，<strong>每次上傳請勿超過 5~7 個檔案</strong>。若有較多天數的資料，請分批次進行上傳。
+    </div>
     
-    <form action="https://sculib.app.n8n.cloud/webhook/upload-seat-data" method="post" enctype="multipart/form-data">
+    <form action="https://sculib.app.n8n.cloud/webhook/upload-seat-multi" method="post" enctype="multipart/form-data">
         <div class="file-input-wrapper">
-            <input type="file" name="data" required>
+            <input type="file" name="data" multiple required>
         </div>
-        <button type="submit" class="submit-btn">開始上傳與寫入</button>
+        <button type="submit" class="submit-btn">開始批次上傳與寫入</button>
     </form>
 </div>
 
