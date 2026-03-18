@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>城區閱覽室 - 空位數據上傳系統</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f6f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #333;
+        }
+        .upload-card {
+            background-color: #ffffff;
+            padding: 40px 50px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+        }
+        .upload-card h2 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 24px;
+            color: #2c3e50;
+        }
+        .upload-card p {
+            font-size: 14px;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+        }
+        .file-input-wrapper {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+        input[type="file"] {
+            width: 100%;
+            padding: 12px;
+            border: 2px dashed #bdc3c7;
+            border-radius: 8px;
+            background-color: #fafbfc;
+            cursor: pointer;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+        input[type="file"]:hover {
+            border-color: #3498db;
+        }
+        .submit-btn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 14px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+        .submit-btn:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+
+<div class="upload-card">
+    <h2>📊 閱覽室空位數據上傳</h2>
+    <p>請選擇您要匯入的資料檔 (.txt 或 .csv)</p>
+    
+    <form action="https://sculib.app.n8n.cloud/webhook/upload-seat-data" method="post" enctype="multipart/form-data">
+        <div class="file-input-wrapper">
+            <input type="file" name="data" required>
+        </div>
+        <button type="submit" class="submit-btn">開始上傳與寫入</button>
+    </form>
+</div>
+
+</body>
+</html>
